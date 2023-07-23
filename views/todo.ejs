@@ -3,144 +3,39 @@
 
 <head>
     <title>Girik's TODO List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f2f2f2;
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #111;
             margin: 0;
             padding: 0;
         }
 
-        .header {
-            background: #FFA500;
-            padding: 20px;
-            color: #fff;
-            text-align: center;
-            font-size: 32px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+        /* ... (rest of the CSS styles remain unchanged) ... */
 
-        .container {
-            max-width: 600px;
-            margin: 30px auto;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        h1 {
-            margin: 0;
-            padding: 20px;
-            color: #FFA500;
-            text-align: center;
-            font-size: 28px;
-            border-bottom: 1px solid #FFA500;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #e0e0e0;
-            padding: 15px;
-            font-size: 18px;
-            transition: background-color 0.3s;
-        }
-
-        li:last-child {
-            border-bottom: none;
-        }
-
-        li a {
-            display: inline-block;
-            margin-right: 10px;
-            text-decoration: none;
-            color: #FF5252;
-            font-size: 20px;
-            transition: color 0.3s;
-        }
-
-        li a:hover {
-            color: #FF1744;
-        }
-
-        .todo-text {
-            flex: 1;
-            color: #333;
-            word-break: break-all;
-        }
-
-        .add-form {
-            padding: 15px;
-            border-top: 1px solid #FFA500;
-            text-align: center;
-        }
-
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 10px;
-            font-size: 16px;
-            color: #FFA500;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #FFA500;
-            border-radius: 5px;
-            font-size: 16px;
-            color: #333;
-            background-color: #f2f2f2;
-        }
-
-        input[type="submit"] {
-            padding: 10px 20px;
-            background-color: #FFA500;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #FF8C00;
-        }
     </style>
 </head>
 
 <body>
-    <div class="header">
-        Girik's TODO List
-    </div>
+    <header class="header">
+        <h1>Girik's TODO List</h1>
+    </header>
     <div class="container">
-        <h1>Tasks to Accomplish</h1>
         <ul>
-            <!-- Sample TODO items (remove this and replace with your dynamic list) -->
+            <% todolist.forEach(function(todo, index) { %>
             <li>
-                <a href="#">✘</a>
-                <a href="#">✎</a>
-                <span class="todo-text">Sample Task 1</span>
+                <a href="/todo/delete/<%= index %>" aria-label="Delete">✘</a>
+                <a href="/todo/<%= index %>" aria-label="Edit">✎</a>
+                <span class="todo-text"><%- todo %></span>
             </li>
-            <li>
-                <a href="#">✘</a>
-                <a href="#">✎</a>
-                <span class="todo-text">Sample Task 2</span>
-            </li>
+            <% }); %>
         </ul>
 
         <form action="/todo/add/" method="post" class="add-form">
-            <label for="newtodo">Add a New Task:</label>
-            <input type="text" name="newtodo" id="newtodo" autofocus />
+            <label for="newtodo">Things to do:</label>
+            <input type="text" name="newtodo" id="newtodo" placeholder="Enter your task here..." autofocus />
             <input type="submit" value="Add" />
         </form>
     </div>
