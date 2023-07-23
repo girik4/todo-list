@@ -2,19 +2,19 @@
 <html>
 
 <head>
-    <title>Girik's TODO List: </title>
+    <title>Girik's TODO List</title>
     <style>
         body {
-            font-family: 'Helvetica Neue', sans-serif;
-            background-color: #111;
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
             margin: 0;
             padding: 0;
         }
 
         .header {
-            background: #FFD700;
+            background: #FFA500;
             padding: 20px;
-            color: #111;
+            color: #fff;
             text-align: center;
             font-size: 32px;
             letter-spacing: 2px;
@@ -25,19 +25,19 @@
         .container {
             max-width: 600px;
             margin: 30px auto;
-            background-color: #111;
+            background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
 
         h1 {
             margin: 0;
             padding: 20px;
-            color: #FFD700;
+            color: #FFA500;
             text-align: center;
-            font-size: 24px;
-            border-bottom: 1px solid #FFD700;
+            font-size: 28px;
+            border-bottom: 1px solid #FFA500;
         }
 
         ul {
@@ -48,7 +48,7 @@
         li {
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #FFD700;
+            border-bottom: 1px solid #e0e0e0;
             padding: 15px;
             font-size: 18px;
             transition: background-color 0.3s;
@@ -73,13 +73,13 @@
 
         .todo-text {
             flex: 1;
-            color: #FFD700;
+            color: #333;
             word-break: break-all;
         }
 
         .add-form {
             padding: 15px;
-            border-top: 1px solid #FFD700;
+            border-top: 1px solid #FFA500;
             text-align: center;
         }
 
@@ -88,23 +88,23 @@
             display: block;
             margin-bottom: 10px;
             font-size: 16px;
-            color: #FFD700;
+            color: #FFA500;
         }
 
         input[type="text"] {
             width: 100%;
             padding: 10px;
-            border: 1px solid #FFD700;
+            border: 1px solid #FFA500;
             border-radius: 5px;
             font-size: 16px;
-            color: #FFD700;
-            background-color: #111;
+            color: #333;
+            background-color: #f2f2f2;
         }
 
         input[type="submit"] {
             padding: 10px 20px;
-            background-color: #FFD700;
-            color: #111;
+            background-color: #FFA500;
+            color: #fff;
             border: none;
             border-radius: 5px;
             font-size: 16px;
@@ -113,7 +113,7 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #FFC107;
+            background-color: #FF8C00;
         }
     </style>
 </head>
@@ -123,18 +123,23 @@
         Girik's TODO List
     </div>
     <div class="container">
+        <h1>Tasks to Accomplish</h1>
         <ul>
-            <% todolist.forEach(function(todo, index) { %>
+            <!-- Sample TODO items (remove this and replace with your dynamic list) -->
             <li>
-                <a href="/todo/delete/<%= index %>">✘</a>
-                <a href="/todo/<%= index %>">✎</a>
-                <span class="todo-text"><%- todo %></span>
+                <a href="#">✘</a>
+                <a href="#">✎</a>
+                <span class="todo-text">Sample Task 1</span>
             </li>
-            <% }); %>
+            <li>
+                <a href="#">✘</a>
+                <a href="#">✎</a>
+                <span class="todo-text">Sample Task 2</span>
+            </li>
         </ul>
 
         <form action="/todo/add/" method="post" class="add-form">
-            <label for="newtodo">Things to do, Batman:</label>
+            <label for="newtodo">Add a New Task:</label>
             <input type="text" name="newtodo" id="newtodo" autofocus />
             <input type="submit" value="Add" />
         </form>
